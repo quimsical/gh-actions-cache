@@ -46,18 +46,18 @@ jobs:
         run: go build
       - name: Install extension
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ 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 }}
         run: gh extensions install .
       - name: Print help
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ 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 }}
         run: |
           gh actions-cache --help
       - name: List Command
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ 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   }}
         run: |
           cache_found=$(gh actions-cache list --key $CacheKey --limit 100 --branch $GITHUB_REF --order desc --sort created-at | grep  $CacheKey)
           echo $cache_found
@@ -65,7 +65,7 @@ jobs:
       - name: Delete Command
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_WRITE_TOKEN }}
+          GITHUB_TOKEN: ${{ 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 }}
         run: |
           cache_delete=$(gh actions-cache delete $CacheKey --branch $GITHUB_REF --confirm | grep "Deleted 1 cache entry with key")
           echo $cache_delete
@@ -78,4 +78,4 @@ jobs:
           status: ${{ job.status }}
           fields: repo,workflow,message,author,action,ref
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
