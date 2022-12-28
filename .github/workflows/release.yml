@@ -34,7 +34,7 @@ jobs:
       - name: Run tests
         run: go test -v ./...
         env:
-          GH_TOKEN: dummy-token-to-facilitate-rest-client
+          GH_TOKEN: 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
 
       - uses: cli/gh-extension-precompile@v1
         with:
